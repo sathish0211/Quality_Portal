@@ -1,0 +1,41 @@
+<mvc:View controllerName="qualityportal.controller.UsageDecision"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form">
+
+    <Page title="Usage Decision" showNavButton="true" navButtonPress="onNavBack">
+        <ObjectHeader
+            title="{inspectionModel>MaterialDesc}"
+            number="{inspectionModel>LotQuantity}"
+            numberUnit="{inspectionModel>UoM}">
+            <attributes>
+                <ObjectAttribute title="Inspection Lot" text="{inspectionModel>InspectionLot}"/>
+                <ObjectAttribute title="Plant" text="{inspectionModel>Plant}"/>
+                <ObjectAttribute title="Status" text="{inspectionModel>UsageDecisionCode}"/>
+            </attributes>
+        </ObjectHeader>
+
+        <f:SimpleForm editable="false" layout="ResponsiveGridLayout" title="Stock Verification">
+            <f:content>
+                <Label text="Unrestricted Stock" />
+                <Text text="{inspectionModel>UnrestrictedStock}" />
+
+                <Label text="Blocked Stock" />
+                <Text text="{inspectionModel>BlockedStock}" />
+
+                <Label text="Production Stock" />
+                <Text text="{inspectionModel>ProductionStock}" />
+
+                <Label text="Validation Status" />
+                <ObjectStatus id="validationStatus" text="Pending Validation" state="Warning" />
+            </f:content>
+        </f:SimpleForm>
+
+        <footer>
+            <OverflowToolbar>
+                <ToolbarSpacer />
+                <Button id="btnApprove" text="Approve" type="Accept" press="onApprove" enabled="false"/>
+                <Button id="btnReject" text="Reject" type="Reject" press="onReject" enabled="false"/>
+            </OverflowToolbar>
+        </footer>
+    </Page>
+</mvc:View>

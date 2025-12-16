@@ -1,0 +1,35 @@
+<mvc:View controllerName="qualityportal.controller.Dashboard"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m" xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout" xmlns:f="sap.f" xmlns:card="sap.f.cards">
+
+    <Page title="Quality Dashboard" showNavButton="true" navButtonPress="onNavBack">
+        <l:Grid defaultSpan="L4 M6 S12" class="sapUiSmallMarginTop">
+            <l:content>
+                <!-- Inspection Lots Tile -->
+                <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop dashboardTile" 
+                    header="Inspection Lots" subheader="View All Lots" press="onInspectionListPress">
+                    <TileContent>
+                        <ImageContent src="sap-icon://list" />
+                    </TileContent>
+                </GenericTile>
+
+                <!-- Result Recording Tile -->
+                <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop dashboardTile" 
+                    header="Result Recording" subheader="Record Quality Results" press="onInspectionListPress">
+                    <TileContent>
+                        <ImageContent src="sap-icon://edit" />
+                    </TileContent>
+                </GenericTile>
+
+                <!-- Usage Decision Tile -->
+                <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop dashboardTile" 
+                    header="Usage Decision" subheader="Approve / Reject" press="onInspectionListPress">
+                    <TileContent>
+                        <ImageContent src="sap-icon://decision" />
+                    </TileContent>
+                </GenericTile>
+            </l:content>
+        </l:Grid>
+    </Page>
+</mvc:View>

@@ -16,21 +16,17 @@
       "toolsId": "4855b6d2-6287-4b65-96e2-34df64c7b942"
     },
     "dataSources": {
-      "ZSG_LOGIN_CDS_890_CDS_VAN": {
-        "uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZSG_LOGIN_CDS_890_CDS_VAN',Version='0001')/$value/",
-        "type": "ODataAnnotation",
-        "settings": {
-          "localUri": "localService/mainService/ZSG_LOGIN_CDS_890_CDS_VAN.xml"
-        }
-      },
-      "mainService": {
+      "ZSG_LOGIN_CDS_890_CDS": {
         "uri": "/sap/opu/odata/sap/ZSG_LOGIN_CDS_890_CDS/",
         "type": "OData",
         "settings": {
-          "annotations": [
-            "ZSG_LOGIN_CDS_890_CDS_VAN"
-          ],
-          "localUri": "localService/mainService/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      },
+      "ZSG_INSPECTION_CDS_890_CDS": {
+        "uri": "/sap/opu/odata/sap/ZSG_INSPECTION_CDS_890_CDS/",
+        "type": "OData",
+        "settings": {
           "odataVersion": "2.0"
         }
       }
@@ -72,10 +68,25 @@
           "bundleName": "qualityportal.i18n.i18n"
         }
       },
-      "": {
-        "dataSource": "mainService",
-        "preload": true,
-        "settings": {}
+      "loginModel": {
+        "type": "sap.ui.model.odata.v2.ODataModel",
+        "settings": {
+          "defaultOperationMode": "Server",
+          "defaultBindingMode": "TwoWay",
+          "defaultCountMode": "Request",
+          "preload": true
+        },
+        "dataSource": "ZSG_LOGIN_CDS_890_CDS"
+      },
+      "inspectionModel": {
+        "type": "sap.ui.model.odata.v2.ODataModel",
+        "settings": {
+          "defaultOperationMode": "Server",
+          "defaultBindingMode": "TwoWay",
+          "defaultCountMode": "Request",
+          "preload": true
+        },
+        "dataSource": "ZSG_INSPECTION_CDS_890_CDS"
       }
     },
     "resources": {
@@ -88,28 +99,85 @@
     "routing": {
       "config": {
         "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "async": true,
+        "viewPath": "qualityportal.view",
         "controlAggregation": "pages",
         "controlId": "app",
-        "transition": "slide",
-        "type": "View",
-        "viewType": "XML",
-        "path": "qualityportal.view",
-        "async": true,
-        "viewPath": "qualityportal.view"
+        "clearControlAggregation": false
       },
       "routes": [
         {
-          "name": "RouteView1",
-          "pattern": ":?query:",
+          "name": "Login",
+          "pattern": "",
           "target": [
-            "TargetView1"
+            "Login"
+          ]
+        },
+        {
+          "name": "Dashboard",
+          "pattern": "dashboard",
+          "target": [
+            "Dashboard"
+          ]
+        },
+        {
+          "name": "InspectionList",
+          "pattern": "inspection-list",
+          "target": [
+            "InspectionList"
+          ]
+        },
+        {
+          "name": "ResultRecording",
+          "pattern": "result-recording/{InspectionLot}",
+          "target": [
+            "ResultRecording"
+          ]
+        },
+        {
+          "name": "UsageDecision",
+          "pattern": "usage-decision/{InspectionLot}",
+          "target": [
+            "UsageDecision"
           ]
         }
       ],
       "targets": {
-        "TargetView1": {
-          "id": "View1",
-          "name": "View1"
+        "Login": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "Login",
+          "viewName": "Login"
+        },
+        "Dashboard": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "Dashboard",
+          "viewName": "Dashboard"
+        },
+        "InspectionList": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "InspectionList",
+          "viewName": "InspectionList"
+        },
+        "ResultRecording": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "ResultRecording",
+          "viewName": "ResultRecording"
+        },
+        "UsageDecision": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "UsageDecision",
+          "viewName": "UsageDecision"
         }
       }
     },

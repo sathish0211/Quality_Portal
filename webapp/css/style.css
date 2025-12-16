@@ -1,1 +1,53 @@
-/* Enter your custom styles here */
+/* Global Styling */
+.sapMPage {
+    background-color: #f7f9fd;
+}
+
+/* Login Card Centering */
+.loginCard {
+    max-width: 400px;
+    margin: auto;
+    margin-top: 10%;
+    padding: 2rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    background: white;
+}
+
+/* Dashboard Tiles */
+.dashboardTile {
+    cursor: pointer;
+    text-align: center;
+    padding: 1rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: transform 0.2s;
+}
+
+.dashboardTile:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Status Colors */
+.statusGreen {
+    color: #2b7d2b;
+    font-weight: bold;
+}
+
+.statusRed {
+    color: #bb0000;
+    font-weight: bold;
+}
+
+.statusOrange {
+    color: #e69500;
+    font-weight: bold;
+}
+
+/* Result Recording Read-Only */
+.readOnlyInput .sapMInputBaseInner {
+    background-color: #f0f0f0;
+    border-color: #ccc;
+}

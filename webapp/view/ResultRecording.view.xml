@@ -1,0 +1,42 @@
+<mvc:View controllerName="qualityportal.controller.ResultRecording"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form">
+
+    <Page title="Result Recording" showNavButton="true" navButtonPress="onNavBack">
+        <ObjectHeader
+            title="{inspectionModel>MaterialDesc}"
+            number="{inspectionModel>LotQuantity}"
+            numberUnit="{inspectionModel>UoM}">
+            <attributes>
+                <ObjectAttribute title="Inspection Lot" text="{inspectionModel>InspectionLot}"/>
+                <ObjectAttribute title="Plant" text="{inspectionModel>Plant}"/>
+                <ObjectAttribute title="Status" text="{inspectionModel>UsageDecisionCode}"/>
+            </attributes>
+        </ObjectHeader>
+
+        <f:SimpleForm id="resultForm" editable="true" layout="ResponsiveGridLayout" title="Record Stock Distribution">
+            <f:content>
+                <Label text="Unrestricted Stock" />
+                <Input value="{inspectionModel>UnrestrictedStock}" type="Number" 
+                       enabled="{= ${inspectionModel>UsageDecisionCode} === 'PENDING' }" />
+
+                <Label text="Blocked Stock" />
+                <Input value="{inspectionModel>BlockedStock}" type="Number"
+                       enabled="{= ${inspectionModel>UsageDecisionCode} === 'PENDING' }" />
+
+                <Label text="Production Stock" />
+                <Input value="{inspectionModel>ProductionStock}" type="Number"
+                       enabled="{= ${inspectionModel>UsageDecisionCode} === 'PENDING' }" />
+            </f:content>
+        </f:SimpleForm>
+
+        <footer>
+            <OverflowToolbar>
+                <ToolbarSpacer />
+                <Button text="Save Results" type="Emphasized" press="onSave" 
+                        enabled="{= ${inspectionModel>UsageDecisionCode} === 'PENDING' }"/>
+                <Button text="Usage Decision" type="Accept" press="onUsageDecisionPress" />
+            </OverflowToolbar>
+        </footer>
+    </Page>
+</mvc:View>

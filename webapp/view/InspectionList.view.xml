@@ -1,0 +1,44 @@
+<mvc:View controllerName="qualityportal.controller.InspectionList"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m" xmlns:core="sap.ui.core">
+
+    <Page title="Inspection Lots" showNavButton="true" navButtonPress="onNavBack">
+        <Table id="inspectionTable" items="{inspectionModel>/ZSG_INSPECTION_CDS_890}" growing="true" growingThreshold="10">
+            <headerToolbar>
+                <Toolbar>
+                    <Title text="Lots" level="H2"/>
+                    <ToolbarSpacer/>
+                    <SearchField width="40%" search="onSearch"/>
+                </Toolbar>
+            </headerToolbar>
+            <columns>
+                <Column><Text text="Inspection Lot"/></Column>
+                <Column><Text text="Material"/></Column>
+                <Column minScreenWidth="Tablet" demandPopin="true"><Text text="Plant"/></Column>
+                <Column minScreenWidth="Tablet" demandPopin="true"><Text text="Date"/></Column>
+                <Column hAlign="End"><Text text="Quantity"/></Column>
+                <Column><Text text="Status"/></Column>
+            </columns>
+            <items>
+                <ColumnListItem type="Navigation" press="onListItemPress">
+                    <cells>
+                        <ObjectIdentifier title="{inspectionModel>InspectionLot}" text="{inspectionModel>InspectionType}"/>
+                        <ObjectIdentifier title="{inspectionModel>MaterialNumber}" text="{inspectionModel>MaterialDesc}"/>
+                        <Text text="{inspectionModel>Plant}"/>
+                        <Text text="{
+                            path: 'inspectionModel>CreatedDate',
+                            type: 'sap.ui.model.type.Date',
+                            formatOptions: { style: 'medium' }
+                        }"/>
+                        <ObjectNumber number="{inspectionModel>LotQuantity}" unit="{inspectionModel>UoM}"/>
+                        <ObjectStatus text="{inspectionModel>UsageDecisionCode}"
+                            state="{
+                                path: 'inspectionModel>UsageDecisionCode',
+                                formatter: '.formatStatusState'
+                            }" />
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+    </Page>
+</mvc:View>
