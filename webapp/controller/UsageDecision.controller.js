@@ -16,9 +16,7 @@ sap.ui.define([
             var sInspectionLot = oEvent.getParameter("arguments").InspectionLot;
             var oModel = this.getOwnerComponent().getModel("inspectionModel");
 
-            var sObjectPath = oModel.createKey("/ZSG_INSPECTION_CDS_890", {
-                InspectionLot: sInspectionLot
-            });
+            var sObjectPath = "/ZSG_INSPECTION_CDS_890(InspectionLot='" + encodeURIComponent(sInspectionLot) + "')";
 
             this.getView().bindElement({
                 path: sObjectPath,

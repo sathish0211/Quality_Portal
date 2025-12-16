@@ -16,9 +16,8 @@ sap.ui.define([
 
             // Assuming the keys for ZSG_INSPECTION_CDS_890 entity are InspectionLot
             // Correct key construction based on OData standard
-            var sObjectPath = this.getOwnerComponent().getModel("inspectionModel").createKey("/ZSG_INSPECTION_CDS_890", {
-                InspectionLot: sInspectionLot
-            });
+            // Manual path construction to avoid crash if metadata is not loaded
+            var sObjectPath = "/ZSG_INSPECTION_CDS_890(InspectionLot='" + encodeURIComponent(sInspectionLot) + "')";
 
             this.getView().bindElement({
                 path: sObjectPath,

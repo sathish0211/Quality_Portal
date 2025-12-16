@@ -27,9 +27,8 @@ sap.ui.define([
             // Reading specifically for the username to validate credentials as per requirement
             // Requirement says: ZSG_LOGIN_CDS_890(username='{USERNAME}')
 
-            var sObjectPath = oModel.createKey("/ZSG_LOGIN_CDS_890", {
-                username: sUsername
-            });
+            // Manual path construction to avoid crash if metadata is not loaded (e.g. 502 error)
+            var sObjectPath = "/ZSG_LOGIN_CDS_890(username='" + encodeURIComponent(sUsername) + "')";
 
             oModel.read(sObjectPath, {
                 success: function (oData) {
