@@ -37,6 +37,9 @@ An SAP Fiori application.
 
 #### Pre-requisites:
 
-1. Active NodeJS LTS (Long Term Support) version and associated supported NPM version.  (See https://nodejs.org)
+4. **BTP Destination Required**:
+    - Since this app connects to a private On-Premise system (`172.17.19.24`), you **MUST** configure a BTP Destination named `S4HANA` in your BTP Cockpit.
+    - This destination must be connected via **SAP Cloud Connector** to the backend system.
+    - Without this, `npm start` (which uses `fiori run`) will fail with **502 Bad Gateway**.
 
 

@@ -18,8 +18,8 @@ server:
         backend:
           - path: /sap
             url: http://172.17.19.24:8000
-            url: http://172.17.19.24:8000
-            # destination: Demo
+            # url: http://172.17.19.24:8000
+            destination: S4HANA # REPLACE THIS with your actual BTP Destination name
     - name: fiori-tools-appreload
       afterMiddleware: compression
       configuration:
